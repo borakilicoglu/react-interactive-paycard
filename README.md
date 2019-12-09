@@ -1,8 +1,6 @@
 # react-interactive-paycard
 
-Inspired from a vue project [vue-interactive-paycard](https://github.com/muhammederdem/vue-interactive-paycard), I decided to recreate the same on React as a part time fun project.
-
-I rewrote this project with context api and hooks.
+Inspired from a vue project [vue-interactive-paycard](https://github.com/muhammederdem/vue-interactive-paycard), I decided to rewrote that with context api and hooks on React as a part time fun project.
 
 A fantastic credit card form with smooth and sweet micro-interactions. Includes number formatting, validation and automatic card type detection. Built with reactjs and also fully responsive
 
