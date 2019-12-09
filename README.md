@@ -2,7 +2,7 @@
 
 Inspired from a vue project [vue-interactive-paycard](https://github.com/muhammederdem/vue-interactive-paycard), I decided to rewrote that with context api and hooks on React as a part time fun project.
 
-A fantastic credit card form with smooth and sweet micro-interactions. Includes number formatting, validation and automatic card type detection. Built with reactjs and also fully responsive
+A fantastic credit card form with smooth and sweet micro-interactions. Includes number formatting, validation and automatic card type detection.
 
 ![](https://res.cloudinary.com/dvq6gu2yi/image/upload/v1575884208/react-interactive-paycard/hero.png)
 
