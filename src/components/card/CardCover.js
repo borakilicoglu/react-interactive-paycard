@@ -5,7 +5,7 @@ const CardCover = () => {
     <div className="card-item__cover">
       <img
         alt=""
-        src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/1.jpeg"
+        src="https://res.cloudinary.com/dvq6gu2yi/image/upload/v1575880442/react-interactive-paycard/1.jpg"
         className="card-item__bg"
       />
     </div>

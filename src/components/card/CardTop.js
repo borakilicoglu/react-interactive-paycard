@@ -9,7 +9,7 @@ const CardTop = props => {
     <div className="card-item__top">
       <img
         alt=""
-        src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
+        src="https://res.cloudinary.com/dvq6gu2yi/image/upload/v1575880187/react-interactive-paycard/chip.png"
         className="card-item__chip"
       />
       <div className="card-item__type">
@@ -17,7 +17,7 @@ const CardTop = props => {
           <CSSTransition timeout={500} key={type} classNames="slide-fade-up">
             <img
               style={{ position: "absolute" }}
-              src={`https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/${type}.png`}
+              src={`https://res.cloudinary.com/dvq6gu2yi/image/upload/v1575880187/react-interactive-paycard/${type}.png`}
               alt=""
               key={type}
               className="card-item__typeImg"

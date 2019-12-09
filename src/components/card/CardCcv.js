@@ -20,8 +20,8 @@ const CardCcv = () => {
         <TransitionGroup component={null}>
           <CSSTransition timeout={500} key={type} classNames="slide-fade-up">
             <img
-              src={`https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/${type}.png`}
               alt=""
+              src={`https://res.cloudinary.com/dvq6gu2yi/image/upload/v1575880187/react-interactive-paycard/${type}.png`}
               key={type}
               className="card-item__typeImg"
             />
