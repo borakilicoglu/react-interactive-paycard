@@ -4,7 +4,7 @@ Inspired from a Vue project [vue-interactive-paycard](https://github.com/muhamme
 
 A fantastic credit card form with smooth and sweet micro-interactions. Includes number formatting, validation and automatic card type detection.
 
-![](https://res.cloudinary.com/dvq6gu2yi/image/upload/v1575884208/react-interactive-paycard/hero.png)
+![](https://res.cloudinary.com/dvq6gu2yi/image/upload/v1575990986/react-interactive-paycard/hero.png)
 
 ## Libraries used
 
