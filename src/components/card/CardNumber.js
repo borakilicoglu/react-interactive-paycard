@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { CardContext } from "../../CardContext"
 
+
 const CardNumber = () => {
   const { getCardType, card } = useContext(CardContext);
   return (
     <label
       htmlFor="cardNumber"
       className="card-item__number"
+      ref={card.cardNumberRef}
     >
       {
         getCardType() === "amex" ? (

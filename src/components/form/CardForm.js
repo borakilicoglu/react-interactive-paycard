@@ -4,7 +4,8 @@ import MaskInput from 'react-maskinput';
 
 const CardForm = () => {
   const { generateCardNumberMask, card, setCard } = useContext(CardContext);
-  const node = useRef();
+  const cardCcv = useRef();
+
   const mask = generateCardNumberMask();
 
   const updateCard = (event) => {
@@ -29,7 +30,7 @@ const CardForm = () => {
     });
   };
 
-  useOutsideClick(node, () => {
+  useOutsideClick(cardCcv, () => {
     setCard({ ...card, isCardFlipped: false });
   });
 
@@ -41,13 +42,27 @@ const CardForm = () => {
     setCard({ ...card, isCardFlipped: true });
   };
 
+  const focusInput = (event) => {
+    card.isInputFocused = true;
+    let targetName = event.target.name;
+    console.log(targetName)
+    let target = targetName === 'cardMonth' || targetName === 'cardYear' ? card.cardDateRef.current : card[`${targetName}Ref`].current;
+
+    let style = {
+      width: `${target.offsetWidth}px`,
+      height: `${target.offsetHeight}px`,
+      transform: `translateX(${target.offsetLeft}px) translateY(${target.offsetTop}px)`
+    }
+    setCard({ ...card, focusElementStyle: style })
+  }
+
   return (
     <div className="card-form__inner">
       <div className="card-input">
         <label htmlFor="cardNumber" className="card-input__label">
           Card Number
         </label>{" "}
-        <MaskInput className="card-input__input" name="cardNumber" id="cardNumber" onChange={updateCard} maskChar=" " mask={mask.replace(/#/g, "0")} />
+        <MaskInput className={"card-input__input" + (card.focusElementStyle ? ' -active' : '')} name="cardNumber" id="cardNumber" onChange={updateCard} onFocus={focusInput} maskChar=" " mask={mask.replace(/#/g, "0")} />
       </div>{" "}
       <div className="card-input">
         <label htmlFor="cardName" className="card-input__label">
@@ -55,24 +70,24 @@ const CardForm = () => {
         </label>{" "}
         <input
           onChange={updateCard}
+          onFocus={focusInput}
           type="text"
           id="cardName"
           name="cardName"
-          data-ref="cardName"
           autoComplete="off"
-          className="card-input__input"
+          className={"card-input__input" + (card.focusElementStyle ? ' -active' : '')}
         />
       </div>{" "}
       <div className="card-form__row">
         <div className="card-form__col">
           <div className="card-form__group">
-            <label htmlFor="cardMonth" className="card-input__label">
+            <label className="card-input__label">
               Expiration Date
             </label>{" "}
             <select
               onChange={updateCard}
+              onFocus={focusInput}
               id="cardMonth"
-              data-ref="cardDate"
               name="cardMonth"
               className="card-input__input -select"
             >
@@ -94,8 +109,8 @@ const CardForm = () => {
             </select>{" "}
             <select
               onChange={updateCard}
+              onFocus={focusInput}
               id="cardYear"
-              data-ref="cardDate"
               name="cardYear"
               className="card-input__input -select"
             >
@@ -123,13 +138,13 @@ const CardForm = () => {
               CVV
             </label>{" "}
             <input
+              ref={cardCcv}
               onClick={onCvvFocus}
               onChange={updateCard}
               onBlur={onCvvBlur}
               type="text"
               name="cardCvv"
               id="cardCvv"
-              ref={node}
               maxLength="4"
               autoComplete="off"
               className="card-input__input"

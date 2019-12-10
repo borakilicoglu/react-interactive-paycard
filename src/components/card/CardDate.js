@@ -9,7 +9,7 @@ const CardDate = () => {
   const { card } = useContext(CardContext);
 
   return (
-    <div className="card-item__date">
+    <div className="card-item__date" ref={card.cardDateRef}>
       <label htmlFor="cardMonth" className="card-item__dateTitle">
         Expires
       </label>

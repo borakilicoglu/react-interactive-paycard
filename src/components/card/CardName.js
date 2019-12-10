@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { CardContext } from "../../CardContext";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
+
 const style = {
   fontSize: "18px",
   lineHeight: "1",
@@ -14,8 +15,9 @@ const style = {
 
 const CardName = props => {
   const { card } = useContext(CardContext);
+
   return (
-    <label htmlFor="cardName" className="card-item__info">
+    <label htmlFor="cardName" className="card-item__info" ref={card.cardNameRef} style={{ height: "56px" }}>
       <div className="card-item__holder">Card Holder</div>
       <CSSTransition in={!card.cardName.length} timeout={500} classNames="slide-fade-up"><div className="card-item__name" style={{ position: "absolute" }} >Full Name</div></CSSTransition>
       {

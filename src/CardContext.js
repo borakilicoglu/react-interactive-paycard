@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useRef } from "react";
 
 export const CardContext = createContext();
 export const CardConsumer = CardContext.Consumer
@@ -14,11 +14,13 @@ export const CardProvider = props => {
     minCardYear: new Date().getFullYear(),
     amexCardMask: "#### ###### #####",
     otherCardMask: "#### #### #### ####",
-    maskStage: '',
     cardNumberTemp: "",
     isCardFlipped: false,
     focusElementStyle: null,
-    isInputFocused: false
+    isInputFocused: false,
+    cardNumberRef: useRef(),
+    cardNameRef: useRef(),
+    cardDateRef: useRef(),
   });
 
   const getCardType = () => {
