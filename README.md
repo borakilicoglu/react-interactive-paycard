@@ -2,7 +2,7 @@
 
 Inspired from a Vue project [vue-interactive-paycard](https://github.com/muhammederdem/vue-interactive-paycard), I decided to rewrite that with context API and hooks on React.
 
-![](https://res.cloudinary.com/dvq6gu2yi/image/upload/v1576061111/react-interactive-paycard/hero.png)
+![](https://res.cloudinary.com/dvq6gu2yi/image/upload/v1576061560/react-interactive-paycard/hero.png)
 
 ## Libraries used
 
