@@ -23,6 +23,17 @@ export const CardProvider = props => {
     cardDateRef: useRef(),
   });
 
+  const minCardMonth = () => {
+    if (card.cardYear === card.minCardYear) return new Date().getMonth() + 1;
+    return 1;
+  }
+
+  const cardYear = () => {
+    if (card.cardMonth < minCardMonth) {
+      card.cardMonth = "";
+    }
+  }
+
   const getCardType = () => {
     let number = card.cardNumber
     let re = new RegExp("^4");
@@ -44,7 +55,7 @@ export const CardProvider = props => {
     return getCardType() === "amex" ? card.amexCardMask : card.otherCardMask;
   }
 
-  const value = { getCardType, generateCardNumberMask, card, setCard }
+  const value = { cardYear, minCardMonth, getCardType, generateCardNumberMask, card, setCard }
 
   return <CardContext.Provider value={value}>{props.children}</CardContext.Provider>
 }

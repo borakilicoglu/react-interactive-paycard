@@ -17,13 +17,9 @@ import "./App.scss";
 export default class App extends Component {
 
   componentDidMount() {
-    this.cardNumberTemp = this.otherCardMask;
-    document.getElementById("cardNumber").focus();
-  }
-
-  minCardMonth() {
-    if (this.cardYear === this.minCardYear) return new Date().getMonth() + 1;
-    return 1;
+    setTimeout(() => {
+      document.getElementById("cardNumber").focus();
+    }, 500)
   }
 
   render() {

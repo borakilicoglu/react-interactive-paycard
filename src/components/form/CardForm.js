@@ -5,7 +5,6 @@ import MaskInput from 'react-maskinput';
 const CardForm = () => {
   const { generateCardNumberMask, card, setCard } = useContext(CardContext);
   const cardCcv = useRef();
-
   const mask = generateCardNumberMask();
 
   const updateCard = (event) => {
@@ -20,13 +19,9 @@ const CardForm = () => {
         callback();
       }
     };
-
     useEffect(() => {
       document.addEventListener("click", handleClick);
-
-      return () => {
-        document.removeEventListener("click", handleClick);
-      };
+      return () => { document.removeEventListener("click", handleClick); };
     });
   };
 
@@ -43,26 +38,39 @@ const CardForm = () => {
   };
 
   const focusInput = (event) => {
-    card.isInputFocused = true;
-    let targetName = event.target.name;
-    console.log(targetName)
-    let target = targetName === 'cardMonth' || targetName === 'cardYear' ? card.cardDateRef.current : card[`${targetName}Ref`].current;
+    let target = event.target.name === 'cardMonth' || event.target.name === 'cardYear' ? card.cardDateRef.current : card[`${event.target.name}Ref`].current;
+    setCard({
+      ...card,
+      isInputFocused: true,
+      focusElementStyle: {
+        width: `${target.offsetWidth}px`,
+        height: `${target.offsetHeight}px`,
+        transform: `translateX(${target.offsetLeft}px) translateY(${target.offsetTop}px)`
+      }
+    })
+  }
 
-    let style = {
-      width: `${target.offsetWidth}px`,
-      height: `${target.offsetHeight}px`,
-      transform: `translateX(${target.offsetLeft}px) translateY(${target.offsetTop}px)`
-    }
-    setCard({ ...card, focusElementStyle: style })
+  const handleBlur = (e) => {
+    setCard({ ...card, isInputFocused: false, focusElementStyle: null })
   }
 
   return (
     <div className="card-form__inner">
       <div className="card-input">
         <label htmlFor="cardNumber" className="card-input__label">
+          <p>{card.isInputFocused}</p>
           Card Number
         </label>{" "}
-        <MaskInput className={"card-input__input" + (card.focusElementStyle ? ' -active' : '')} name="cardNumber" id="cardNumber" onChange={updateCard} onFocus={focusInput} maskChar=" " mask={mask.replace(/#/g, "0")} />
+        <MaskInput
+          className={"card-input__input" + (card.focusElementStyle ? ' -active' : '')}
+          onBlur={handleBlur}
+          name="cardNumber"
+          id="cardNumber"
+          onChange={updateCard}
+          onFocus={focusInput}
+          maskChar=" "
+          mask={mask.replace(/#/g, "0")}
+        />
       </div>{" "}
       <div className="card-input">
         <label htmlFor="cardName" className="card-input__label">
@@ -71,6 +79,7 @@ const CardForm = () => {
         <input
           onChange={updateCard}
           onFocus={focusInput}
+          onBlur={handleBlur}
           type="text"
           id="cardName"
           name="cardName"
@@ -87,6 +96,7 @@ const CardForm = () => {
             <select
               onChange={updateCard}
               onFocus={focusInput}
+              onBlur={handleBlur}
               id="cardMonth"
               name="cardMonth"
               className="card-input__input -select"
@@ -110,6 +120,7 @@ const CardForm = () => {
             <select
               onChange={updateCard}
               onFocus={focusInput}
+              onBlur={handleBlur}
               id="cardYear"
               name="cardYear"
               className="card-input__input -select"
