@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-input-mask": "^3.0.0-alpha.0",
     "react-maskinput": "^2.0.1",
     "react-scripts": "3.2.0",
-    "react-transition-group": "^4.3.0"
+    "react-transition-group": "^4.3.0",
+    "sass": "^1.76.0"
   },
   "scripts": {
     "start": "react-scripts start",
