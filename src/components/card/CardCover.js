@@ -4,12 +4,12 @@ const CardCover = () => {
   return (
     <div className="card-item__cover">
       <img
-        alt=""
-        src="https://res.cloudinary.com/dvq6gu2yi/image/upload/v1575880442/react-interactive-paycard/1.jpg"
+        alt="react-interactive-paycard"
+        src="https://i.imgur.com/FxxeJtg.jpeg"
         className="card-item__bg"
       />
     </div>
-  )
-}
+  );
+};
 
 export default CardCover;
